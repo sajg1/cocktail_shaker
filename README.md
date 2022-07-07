@@ -18,6 +18,7 @@ You may also see any lint errors in the console.
 
 Navigates to the env directory in the backend and\
 executes the flask run command.
+Opens [http://localhost:5000] (http://localhost:5000) to view in browser.
 
 ### `npm test`
 
