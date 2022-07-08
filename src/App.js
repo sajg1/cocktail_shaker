@@ -7,19 +7,17 @@ import axios from 'axios';
 
 function App() {
 
-  const [profileData, setProfileData] = useState(null);
+  const [cocktailData, setCocktailData] = useState(null);
 
   function getData() {
     axios({
         method: "GET",
-        url: "/profile"
+        url: "/random-cocktail"
       })
       .then((response) => {
         const res = response.data;
-        setProfileData(({
-          profile_name: res.name,
-          about_me: res.about
-        }))
+        console.log(res)
+        setCocktailData(res)
       })
       .catch((error) => {
         console.log(error.response)
@@ -46,9 +44,8 @@ function App() {
 
         {/* new line start*/}
         <p>To get your profile details: </p><button onClick={getData}>Click me</button>
-        {profileData && <div>
-              <p>Profile name: {profileData.profile_name}</p>
-              <p>About me: {profileData.about_me}</p>
+        {cocktailData && <div>
+              <p>Profile name: {cocktailData}</p>
             </div>
         }
          {/* end of new line */}

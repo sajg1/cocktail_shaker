@@ -1,12 +1,14 @@
 from flask import Flask
+import requests
 
 app = Flask(__name__)
+url = "http://www.thecocktaildb.com/api/json/v1/1/random.php"
 
-@app.route('/profile')
-def my_profile():
-    response_body = {
-        "name": "Stephen",
-        "about": "Hello, I'm the developer!"
-    }
 
-    return response_body
+
+@app.route('/random-cocktail')
+def random_cocktail():
+    response = requests.get(url)
+    results = response.json()
+    print(results)
+    return results
