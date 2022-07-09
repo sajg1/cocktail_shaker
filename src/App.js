@@ -1,6 +1,5 @@
 
 import './App.css';
-import logo from './logo.svg';
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -16,8 +15,12 @@ function App() {
       })
       .then((response) => {
         const res = response.data;
+        const random_cocktail = res['drinks'][0]
         console.log(res)
-        setCocktailData(res)
+        setCocktailData({
+          name: random_cocktail.strDrink,
+          image: random_cocktail.strDrinkThumb
+        })
       })
       .catch((error) => {
         console.log(error.response)
@@ -29,23 +32,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-
         {/* new line start*/}
-        <p>To get your profile details: </p><button onClick={getData}>Click me</button>
+        <p>To get your Random Cocktail: </p><button onClick={getData}>Click me</button>
         {cocktailData && <div>
-              <p>Profile name: {cocktailData}</p>
+              <p>Drink Name: {cocktailData.name}</p>
+              <img src={cocktailData.image} alt="Drink img"></img>
             </div>
         }
          {/* end of new line */}
