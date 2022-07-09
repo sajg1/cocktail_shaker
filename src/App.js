@@ -1,10 +1,9 @@
-
-import RandomCocktail from './components/RandomCocktail'
+import Main from './containers/Main'
 
 
 function App() {
   return (
-    <RandomCocktail />
+    <Main />
   );
 }
 
