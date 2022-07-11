@@ -1,7 +1,7 @@
 import '../App.css'
 import React, { useState } from 'react';
 
-const CocktailBySpirit = (props) => {
+const CocktailBySpiritForm = (props) => {
 
 const [spirit, setSpirit] = useState({
   name: ""
@@ -9,14 +9,15 @@ const [spirit, setSpirit] = useState({
 
 const handleSubmit = (e) => {
   e.preventDefault()
-  console.log(spirit)
+  props.getCocktailBySpirit(spirit.name)
 }
 
   return (
-    <div classname="App-header">
+    <div className="App-header">
       <form onSubmit={handleSubmit}>
         <label htmlFor='spirit-selector'>Choose your starter spirit:</label>
         <select name='spirit-selector' id='spirit-selector' onChange={(e) => setSpirit({...spirit, name:e.target.value})} value={spirit.name}>
+          <option value="" selected disabled hidden>Select your base spirit...</option>
           <option value="gin">Gin</option>
           <option value="bourbon">Bourbon</option>
           <option value="vodka">Vodka</option>
@@ -26,12 +27,10 @@ const handleSubmit = (e) => {
         </select>
         <input type="submit" value="Find your Cocktail!" />
       </form>
-      <div>
-        <p>Name: Drink Name</p>
-        <img src="" alt="Cocktail"></img>
-      </div>
+      <p>OR</p>
+      <p>Just roll the dice: </p><button onClick={props.getCocktail}>Click me</button>
     </div>
   )
 }
 
-export default CocktailBySpirit
+export default CocktailBySpiritForm;
