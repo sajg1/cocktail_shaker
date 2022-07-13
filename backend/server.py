@@ -5,7 +5,6 @@ import random
 app = Flask(__name__)
 base_url = "http://www.thecocktaildb.com/api/json/v1/1"
 
-
 @app.route('/random-cocktail')
 def random_cocktail():
     response = requests.get(f"{base_url}/random.php")
@@ -26,3 +25,7 @@ def cocktail_by_spirit(spirit):
     selected_response = requests.get(f"{base_url}/lookup.php?i={selected_cocktail_id}")
     result = selected_response.json()
     return result
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
