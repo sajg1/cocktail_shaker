@@ -1,4 +1,5 @@
 from flask import Flask, request
+from flask_sqlalchemy import SQLAlchemy
 from pprint import pprint
 import json
 import requests
@@ -6,6 +7,25 @@ import random
 
 app = Flask(__name__)
 base_url = "http://www.thecocktaildb.com/api/json/v1/1"
+
+# Database
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///likedcocktails.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+# database model
+class LikedCocktails(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    glass = db.Column(db.String(100), nullable=False)
+    ingredients = db.Column(db.Text(), nullable=False)
+    measures = db.Column(db.Text(), nullable=False)
+    instructions = db.Column(db.Text(), nullable=False)
+    image = db.Column(db.String(250), nullable=False)
+
+db.init_app(app)
+# db.create_all()
+
 
 @app.route('/random-cocktail')
 def random_cocktail():
