@@ -1,4 +1,3 @@
-import '../App.css'
 import React, { useState } from 'react';
 
 const CocktailBySpiritForm = (props) => {
@@ -13,7 +12,7 @@ const handleSubmit = (e) => {
 }
 
   return (
-    <div className="App-header">
+    <div className="">
       <form onSubmit={handleSubmit}>
         <label htmlFor='spirit-selector'>Choose your starter spirit:</label>
         <select name='spirit-selector' id='spirit-selector' onChange={(e) => setSpirit({...spirit, name:e.target.value})} value={spirit.name}>

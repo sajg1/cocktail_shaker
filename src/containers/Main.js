@@ -1,6 +1,8 @@
 import Cocktail from '../components/Cocktail';
 import CocktailBySpiritForm from '../components/CocktailBySpiritForm';
-import React, { useState } from 'react';
+import DrinkDetails from '../components/DrinkDetails';
+import React, { useState} from 'react';
+import '../styles/Main.css'
 import axios from 'axios';
 
 
@@ -12,11 +14,11 @@ export default function Main() {
   // ingredients and measures lists.
   function cocktailSetup(cocktail_response) {
     const res = cocktail_response.data;
-    const random_cocktail = res['drinks'][0]
+    const cocktail = res['drinks'][0]
     // sort ingredients and measures into lists
     const ingredients = []
     const measures = []
-    for (const [key,value] of Object.entries(random_cocktail)) {
+    for (const [key,value] of Object.entries(cocktail)) {
       if (key.includes("strIngredient")) {
         if (value !== null) {
           let new_object = {};
@@ -32,16 +34,14 @@ export default function Main() {
         }
       }
     }
-    console.log("Ingredients: ",ingredients)
-    console.log("Measures: ",measures)
     setCurrentCocktailData({
-      id: random_cocktail.idDrink,
-      name: random_cocktail.strDrink,
-      glass: random_cocktail.strGlass,
+      id: cocktail.idDrink,
+      name: cocktail.strDrink,
+      glass: cocktail.strGlass,
       ingredients: ingredients,
       measures: measures,
-      instructions: random_cocktail.strInstructions,
-      image: random_cocktail.strDrinkThumb
+      instructions: cocktail.strInstructions,
+      image: cocktail.strDrinkThumb
     })
   }
 
@@ -50,15 +50,15 @@ export default function Main() {
     axios({
         method: "GET",
         url: "/random-cocktail"
-      })
-      .then((response) => {
-        cocktailSetup(response)
-      })
-      .catch((error) => {
-        console.log(error.response)
-        console.log(error.response.status)
-        console.log(error.response.headers)
-      })
+    })
+    .then((response) => {
+      cocktailSetup(response)
+    })
+    .catch((error) => {
+      console.log(error.response)
+      console.log(error.response.status)
+      console.log(error.response.headers)
+    })
   }
 
 
@@ -77,10 +77,28 @@ export default function Main() {
     })
   }
 
+  function addLikedDrink() {
+    const headers = {
+      'Content-Type': 'application/json'
+    }
+
+    axios.post('/add-liked-cocktail/', {currentCocktailData}, {
+      headers:headers
+    })
+    .then((response) => {
+      console.log(response)
+    })
+    .then((error) => {
+      console.log(error)
+    })
+  }
+
   return (
     <React.Fragment>
-      <CocktailBySpiritForm cocktailBySpirit={currentCocktailData} getCocktail={getRandomCocktailData} getCocktailBySpirit={getCocktailBySpirit} />
-      <Cocktail cocktail={currentCocktailData} />
+      <h1 className="logo">CocktailShaker</h1>
+      <CocktailBySpiritForm className="cocktail-component" cocktailBySpirit={currentCocktailData} getCocktail={getRandomCocktailData} getCocktailBySpirit={getCocktailBySpirit} />
+      <Cocktail className="cocktail-component" cocktail={currentCocktailData} likeDrink={addLikedDrink}/>
+      <DrinkDetails className="cocktail-component" cocktail={currentCocktailData} />
     </ React.Fragment>
   )
 }

@@ -1,4 +1,6 @@
-from flask import Flask
+from flask import Flask, request
+from pprint import pprint
+import json
 import requests
 import random
 
@@ -25,6 +27,16 @@ def cocktail_by_spirit(spirit):
     selected_response = requests.get(f"{base_url}/lookup.php?i={selected_cocktail_id}")
     result = selected_response.json()
     return result
+
+@app.route('/add-liked-cocktail/', methods=["POST"])
+def addLikedCocktail():
+    content = request.get_json(force=True)
+    pprint(content.get('currentCocktailData'))
+    return content
+
+
+
+
 
 
 if __name__ == "__main__":
