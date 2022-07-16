@@ -1,9 +1,8 @@
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
 from pprint import pprint
-import json
-import requests
-import random
+import json, jsonify, requests, random
 
 app = Flask(__name__)
 base_url = "http://www.thecocktaildb.com/api/json/v1/1"
@@ -12,6 +11,14 @@ base_url = "http://www.thecocktaildb.com/api/json/v1/1"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///likedcocktails.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+ma = Marshmallow(app)
+
+def row_to_dict(row):
+    d = {}
+    for column in row.__table__.columns:
+        d[column.name] = str(getattr(row, column.name))
+
+    return d
 
 # database model
 class Cocktail(db.Model):
@@ -25,6 +32,11 @@ class Cocktail(db.Model):
 
 # db.init_app(app)
 # db.create_all()
+
+# Marshmallow Schema to convert SQL object to JSON
+class CocktailSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Cocktail
 
 # READ
 @app.route('/random-cocktail')
@@ -48,9 +60,31 @@ def cocktail_by_spirit(spirit):
     result = selected_response.json()
     return result
 
+@app.route('/liked-cocktails')
+def all_liked_cocktails():
+    # all_liked_cocktails = Cocktail.query.all()
+    all = Cocktail.query.all()
+    list_all = []
+    for cocktail in all:
+        dict = row_to_dict(cocktail)
+        print("Before: ",type(dict['ingredients']))
+        dict['ingredients'] = json.loads(dict['ingredients'])
+        dict['measures'] = json.loads(dict['measures'])
+        list_all.append(dict)
+    # print(type(dict['ingredients']))
+    print(list_all)
+    print("After: ", type(list_all[0]['ingredients']))
+
+    # print(type(dict['ingredients']))
+    cocktail_schema = CocktailSchema(many=True)
+    output = cocktail_schema.dumps(list_all)
+    print(type(output))
+    print(type(output[0]))
+    return output
+
 # CREATE A COCKTAIL FOR DB
 @app.route('/add-liked-cocktail/', methods=["POST"])
-def addLikedCocktail():
+def add_liked_cocktail():
     content = request.get_json(force=True)
     cocktail_data = content.get('currentCocktailData')
     # convert lists to strings for db entry
