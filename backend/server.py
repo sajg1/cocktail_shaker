@@ -14,7 +14,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # database model
-class LikedCocktails(db.Model):
+class Cocktail(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     glass = db.Column(db.String(100), nullable=False)
@@ -23,7 +23,7 @@ class LikedCocktails(db.Model):
     instructions = db.Column(db.Text(), nullable=False)
     image = db.Column(db.String(250), nullable=False)
 
-db.init_app(app)
+# db.init_app(app)
 # db.create_all()
 
 
@@ -51,8 +51,24 @@ def cocktail_by_spirit(spirit):
 @app.route('/add-liked-cocktail/', methods=["POST"])
 def addLikedCocktail():
     content = request.get_json(force=True)
-    pprint(content.get('currentCocktailData'))
-    return content
+    cocktail_data = content.get('currentCocktailData')
+    # convert lists to strings for db entry
+    ingredients_str = json.dumps(cocktail_data['ingredients'])
+    measures_str = json.dumps(cocktail_data['measures'])
+    new_cocktail = Cocktail(
+        id=cocktail_data['id'],
+        name=cocktail_data['name'],
+        glass=cocktail_data['glass'],
+        ingredients=ingredients_str,
+        measures=measures_str,
+        instructions=cocktail_data['instructions'],
+        image=cocktail_data['image']
+    )
+    db.session.add(new_cocktail)
+    db.session.commit()
+    pprint(content.get('currentCocktailData')['ingredients'])
+    # liked_cocktail = LikedCocktail()
+    return "Complete"
 
 
 
