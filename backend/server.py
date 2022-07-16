@@ -26,7 +26,7 @@ class Cocktail(db.Model):
 # db.init_app(app)
 # db.create_all()
 
-
+# READ
 @app.route('/random-cocktail')
 def random_cocktail():
     response = requests.get(f"{base_url}/random.php")
@@ -48,6 +48,7 @@ def cocktail_by_spirit(spirit):
     result = selected_response.json()
     return result
 
+# CREATE A COCKTAIL FOR DB
 @app.route('/add-liked-cocktail/', methods=["POST"])
 def addLikedCocktail():
     content = request.get_json(force=True)
@@ -55,6 +56,10 @@ def addLikedCocktail():
     # convert lists to strings for db entry
     ingredients_str = json.dumps(cocktail_data['ingredients'])
     measures_str = json.dumps(cocktail_data['measures'])
+    id = cocktail_data['id']
+    if Cocktail.query.get(id):
+        print("Already in db")
+        return "Already in db"
     new_cocktail = Cocktail(
         id=cocktail_data['id'],
         name=cocktail_data['name'],
@@ -69,6 +74,8 @@ def addLikedCocktail():
     pprint(content.get('currentCocktailData')['ingredients'])
     # liked_cocktail = LikedCocktail()
     return "Complete"
+
+
 
 
 
