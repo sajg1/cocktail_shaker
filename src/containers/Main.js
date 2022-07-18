@@ -9,6 +9,7 @@ import axios from 'axios';
 export default function Main() {
 
   const [currentCocktailData, setCurrentCocktailData] = useState(null);
+  const [likedCocktailsList, setLikedCocktailsList] = useState(null);
 
   // a function to setup the cocktaildata object structure, including the
   // ingredients and measures lists.
@@ -42,6 +43,22 @@ export default function Main() {
       measures: measures,
       instructions: cocktail.strInstructions,
       image: cocktail.strDrinkThumb
+    })
+  }
+
+  function getLikedCocktailsList() {
+    axios({
+      method: "GET",
+      url: "/liked-cocktails"
+    })
+    .then((response) => {
+      console.log(response)
+      setLikedCocktailsList(response['data']['output'])
+    })
+    .catch((error) => {
+      console.log(error.response)
+      console.log(error.response.status)
+      console.log(error.response.headers)
     })
   }
 
@@ -81,7 +98,6 @@ export default function Main() {
     const headers = {
       'Content-Type': 'application/json'
     }
-
     axios.post('/add-liked-cocktail/', {currentCocktailData}, {
       headers:headers
     })
@@ -99,6 +115,14 @@ export default function Main() {
       <CocktailBySpiritForm className="cocktail-component" cocktailBySpirit={currentCocktailData} getCocktail={getRandomCocktailData} getCocktailBySpirit={getCocktailBySpirit} />
       <Cocktail className="cocktail-component" cocktail={currentCocktailData} likeDrink={addLikedDrink}/>
       <DrinkDetails className="cocktail-component" cocktail={currentCocktailData} />
+      <button onClick={getLikedCocktailsList}>Update State</button>
+      { likedCocktailsList &&
+      <div>
+        <p>{likedCocktailsList[0].name}</p>
+        <p>{likedCocktailsList[0].glass}</p>
+      </div>
+      }
+
     </ React.Fragment>
   )
 }

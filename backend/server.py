@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+from marshmallow import fields, Schema
 from pprint import pprint
 import json, jsonify, requests, random
 
@@ -13,10 +14,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
+# enables the conversion between SQLAlchemy row object to dict
 def row_to_dict(row):
     d = {}
     for column in row.__table__.columns:
-        d[column.name] = str(getattr(row, column.name))
+        d[column.name] = getattr(row, column.name)
 
     return d
 
@@ -34,9 +36,16 @@ class Cocktail(db.Model):
 # db.create_all()
 
 # Marshmallow Schema to convert SQL object to JSON
-class CocktailSchema(ma.SQLAlchemyAutoSchema):
+class CocktailSchema(Schema):
     class Meta:
-        model = Cocktail
+        fields = ("id", "name", "glass", "ingredients", "measures", "instructions", "image")
+        # id = fields.Integer()
+        # name = fields.String()
+        # glass = fields.String()
+        # ingredients = fields.List(fields.Dict(keys=fields.String(), values=fields.String()))
+        # measures = fields.List(fields.Dict(keys=fields.String(), values=fields.String()))
+        # instructions = fields.String()
+        # image = fields.String()
 
 # READ
 @app.route('/random-cocktail')
@@ -62,25 +71,19 @@ def cocktail_by_spirit(spirit):
 
 @app.route('/liked-cocktails')
 def all_liked_cocktails():
-    # all_liked_cocktails = Cocktail.query.all()
     all = Cocktail.query.all()
-    list_all = []
+    cocktail_list = []
+    # Convert db row to object and convert
+    # ingredients and measures back to list
     for cocktail in all:
         dict = row_to_dict(cocktail)
-        print("Before: ",type(dict['ingredients']))
         dict['ingredients'] = json.loads(dict['ingredients'])
         dict['measures'] = json.loads(dict['measures'])
-        list_all.append(dict)
-    # print(type(dict['ingredients']))
-    print(list_all)
-    print("After: ", type(list_all[0]['ingredients']))
-
-    # print(type(dict['ingredients']))
+        cocktail_list.append(dict)
+    # Object serialization and deserialization
     cocktail_schema = CocktailSchema(many=True)
-    output = cocktail_schema.dumps(list_all)
-    print(type(output))
-    print(type(output[0]))
-    return output
+    output = cocktail_schema.load(cocktail_list)
+    return {"output" : output}
 
 # CREATE A COCKTAIL FOR DB
 @app.route('/add-liked-cocktail/', methods=["POST"])
