@@ -18,11 +18,11 @@ const DrinkDetails = (props) => {
               <tbody>
                 <tr>
                   <td>Ingredients | </td>
-                  {props.cocktail.ingredients.map((ingredient) => <td key={Object.keys(ingredient)[0]}>{Object.values(ingredient)[0]}</td>)}
+                  {props.cocktail.ingredients.map((ingredient, index) => <td key={index}>{ingredient.ingredient}</td>)}
                 </tr>
                 <tr>
                   <td>Measures | </td>
-                  {props.cocktail.measures.map((measure) =><td key={Object.keys(measure)[0]}>{Object.values(measure)[0]}</td>)}
+                  {props.cocktail.measures.map((measure, index) =><td key={index}>{measure.measure}</td>)}
                 </tr>
               </tbody>
             </table>

@@ -23,14 +23,14 @@ export default function Main() {
       if (key.includes("strIngredient")) {
         if (value !== null) {
           let new_object = {};
-          new_object[key] = value;
+          new_object.ingredient = value;
           ingredients.push(new_object)
         }
       }
       else if (key.includes("strMeasure")) {
         if (value !== null) {
           let new_object = {};
-          new_object[key] = value;
+          new_object.measure = value;
           measures.push(new_object)
         }
       }
@@ -70,6 +70,7 @@ export default function Main() {
     })
     .then((response) => {
       cocktailSetup(response)
+      console.log(currentCocktailData)
     })
     .catch((error) => {
       console.log(error.response)
@@ -109,6 +110,7 @@ export default function Main() {
     })
   }
 
+
   return (
     <React.Fragment>
       <h1 className="logo">CocktailShaker</h1>
@@ -118,8 +120,12 @@ export default function Main() {
       <button onClick={getLikedCocktailsList}>Update State</button>
       { likedCocktailsList &&
       <div>
-        <p>{likedCocktailsList[0].name}</p>
-        <p>{likedCocktailsList[0].glass}</p>
+        <p>Name: {likedCocktailsList[2].name}</p>
+        <p>Glassware: {likedCocktailsList[2].glass}</p>
+        <div>
+          <h6>Ingredients</h6>
+          {likedCocktailsList[2].ingredients.map((ingredient, index) =><p key={index}>{ingredient.ingredient}</p>)}
+        </div>
       </div>
       }
 
