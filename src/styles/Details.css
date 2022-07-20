@@ -1,0 +1,16 @@
+.details-component {
+  padding: 30px;
+  text-align:center;
+}
+
+.details-table {
+
+}
+
+.details-component img {
+  border: 1px solid;
+  border-radius: 25%;
+  padding: 5px;
+  width: 250px;
+  background-color: #6E7582;
+}
