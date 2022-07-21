@@ -12,8 +12,6 @@ const Cocktail = (props) => {
     <div className="">
       { props.cocktail &&
         <div>
-          <p>Drink Name: {props.cocktail.name}</p>
-          <img src={props.cocktail.image} alt="Drink img"></img>
           <button onClick={handleLikeClick}>👍</button>
         </div>
       }

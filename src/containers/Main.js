@@ -1,7 +1,8 @@
-import Cocktail from '../components/Cocktail';
-import CocktailBySpiritForm from '../components/CocktailBySpiritForm';
-import DrinkDetails from '../components/DrinkDetails';
+import Home from '../components/Home';
+import NavBar from '../components/NavBar';
+import LikedCocktails from '../components/LikedCocktails';
 import React, { useState} from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import '../styles/Main.css'
 import axios from 'axios';
 
@@ -112,23 +113,23 @@ export default function Main() {
 
 
   return (
-    <React.Fragment>
+    <Router>
       <h1 className="logo">CocktailShaker</h1>
-      <CocktailBySpiritForm className="cocktail-component" cocktailBySpirit={currentCocktailData} getCocktail={getRandomCocktailData} getCocktailBySpirit={getCocktailBySpirit} />
-      <Cocktail className="cocktail-component" cocktail={currentCocktailData} likeDrink={addLikedDrink}/>
-      <DrinkDetails className="cocktail-component" cocktail={currentCocktailData} />
-      <button onClick={getLikedCocktailsList}>Update State</button>
-      { likedCocktailsList &&
-      <div>
-        <p>Name: {likedCocktailsList[2].name}</p>
-        <p>Glassware: {likedCocktailsList[2].glass}</p>
-        <div>
-          <h6>Ingredients</h6>
-          {likedCocktailsList[2].ingredients.map((ingredient, index) =><p key={index}>{ingredient.ingredient}</p>)}
-        </div>
-      </div>
-      }
-
-    </ React.Fragment>
+      < NavBar />
+      <Routes>
+        <Route exact path="/" element={<Home
+          cocktailBySpirit={currentCocktailData}
+          likedCocktails={likedCocktailsList}
+          getRandomCocktailData={getRandomCocktailData}
+          getCocktailBySpirit={getCocktailBySpirit}
+          getLikedCocktailsList={getLikedCocktailsList}
+          likedDrink={addLikedDrink}
+          cocktail={currentCocktailData}/>}/>
+        <Route   // UPDATED HERE
+          path="/liked-cocktails"
+          element={<LikedCocktails liked={likedCocktailsList}/>}
+        />
+      </Routes>
+    </Router>
   )
 }
