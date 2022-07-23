@@ -108,7 +108,6 @@ def add_liked_cocktail():
     )
     db.session.add(new_cocktail)
     db.session.commit()
-    pprint(content.get('currentCocktailData')['ingredients'])
     # liked_cocktail = LikedCocktail()
     return "Complete"
 

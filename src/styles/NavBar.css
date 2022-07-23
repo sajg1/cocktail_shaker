@@ -1,0 +1,18 @@
+.nav-bar {
+  overflow: hidden;
+  background-color: #EE5A5A;
+  padding: 0;
+}
+
+.nav-bar li {
+  float:left;
+  display: block;
+  font-weight: bold;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.nav-bar li:hover {
+  background-color: #FF9E74;
+}

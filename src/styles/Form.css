@@ -1,3 +1,36 @@
-.form-component {
-  background-color: #F39189;
+.form-container {
+  background-color: #22EACA;
+  padding: 20px;
+  text-align: center;
+}
+
+.form-only .roll-dice {
+  padding: 10px;
+}
+
+label, p {
+  color: #B31E6F;
+  font-weight: 600;
+  padding: 10px 10px 10px 0;
+}
+
+select {
+  margin: 0 20px 0 20px;
+  padding: 5px 0 5px 0;
+  background-color: #B31E6F;
+  color: #22EACA;
+  font-weight: 600;
+}
+
+button, input {
+  color: #22EACA;
+  font-weight: 600;
+  padding: 5px;
+  background-color: #B31E6F;
+  border-radius: 5px;
+}
+
+button:hover, input:hover {
+  background-color: #FF9E74;
+  color: #B31E6F;
 }

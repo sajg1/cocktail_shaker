@@ -114,7 +114,9 @@ export default function Main() {
 
   return (
     <Router>
-      <h1 className="logo">CocktailShaker</h1>
+      <div className='header'>
+        <h1 className="logo">CocktailShaker</h1>
+      </div>
       < NavBar />
       <Routes>
         <Route exact path="/" element={<Home

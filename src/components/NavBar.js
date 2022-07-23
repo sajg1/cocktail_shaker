@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import '../styles/NavBar.css'
 
 const NavBar = () => (
-  <ul>
+  <ul className="nav-bar">
     <li>
-      <Link to="/">Home</Link>
+      <Link style={{textDecoration:'none'}} to="/">Home</Link>
     </li>
     <li>
-      <Link to="/liked-cocktails">Liked Cocktails</Link>
+      <Link style={{textDecoration:'none'}} to="/liked-cocktails">Liked Cocktails</Link>
     </li>
   </ul>
 );

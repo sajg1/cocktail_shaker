@@ -13,8 +13,8 @@ const handleSubmit = (e) => {
 }
 
   return (
-    <div className="form-component">
-      <form onSubmit={handleSubmit}>
+    <div className="form-container">
+      <form className="form-only" onSubmit={handleSubmit}>
         <label htmlFor='spirit-selector'>Choose your starter spirit:</label>
         <select name='spirit-selector' id='spirit-selector' onChange={(e) => setSpirit({...spirit, name:e.target.value})} value={spirit.name}>
           <option value="" selected disabled hidden>Select your base spirit...</option>
@@ -27,8 +27,11 @@ const handleSubmit = (e) => {
         </select>
         <input type="submit" value="Find your Cocktail!" />
       </form>
-      <p>OR</p>
-      <p>Just roll the dice: </p><button onClick={props.getCocktail}>Click me</button>
+      <p>Or</p>
+      <div classname="roll-dice">
+        <label>Just roll the dice: </label>
+        <button onClick={props.getCocktail}>Click me</button>
+      </div>
     </div>
   )
 }

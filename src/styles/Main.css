@@ -1,13 +1,10 @@
 * {
-  margin: 0;
-  background-color: #BB8082;
+  margin:0;
 }
 
-.main-container {
-  text-align: center;
-}
-
-.logo {
-  padding: 10px 0 50px 0;
-  color: white;
+.header {
+  padding: 20px;
+  background-color: #B31E6F;
+  color: #EE5A5A;
+  text-align: left;
 }

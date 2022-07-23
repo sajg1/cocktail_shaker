@@ -4,7 +4,11 @@ import '../styles/Details.css';
 const DrinkDetails = (props) => {
 
 
-
+  const handleLikeClick = (event) => {
+    event.preventDefault();
+    props.likeDrink()
+  }
+  
   if (props.cocktail == null) {
     return null;
   }
@@ -15,6 +19,7 @@ const DrinkDetails = (props) => {
         <div>
           <h3>{props.cocktail.name}</h3>
           <img src={props.cocktail.image} alt="Missing Cocktail" ></img>
+          <button onClick={handleLikeClick}>👍</button>
           <p>This should be presented in a {props.cocktail.glass}.</p>
           <table className="details-table">
             <tbody>
