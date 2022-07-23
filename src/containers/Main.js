@@ -1,7 +1,7 @@
 import Home from '../components/Home';
 import NavBar from '../components/NavBar';
 import LikedCocktails from '../components/LikedCocktails';
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import '../styles/Main.css'
 import axios from 'axios';
@@ -127,7 +127,7 @@ export default function Main() {
           cocktail={currentCocktailData}/>}/>
         <Route   // UPDATED HERE
           path="/liked-cocktails"
-          element={<LikedCocktails liked={likedCocktailsList}/>}
+          element={<LikedCocktails liked={likedCocktailsList} getLiked={getLikedCocktailsList}/>}
         />
       </Routes>
     </Router>
