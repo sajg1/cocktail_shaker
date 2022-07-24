@@ -10,12 +10,25 @@ const LikedCocktails = (props) => {
 
   return(
     <div className='liked-component'>
-      <h2>List of your liked Cocktails</h2>
+      <h2 className="list-heading">List of your liked Cocktails</h2>
       { props.liked &&
         <div>
-          <ul>
-            {props.liked.map((cocktail, index) => <li style={{textDecoration:'none'}} key={index}>{cocktail.name}</li>)}
-          </ul>
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Glassware</th>
+              <th>Instructions</th>
+            </tr>
+            {props.liked.map((cocktail, index) =>
+              <React.Fragment>
+                <tr>
+                  <td key={index}>{cocktail.name}</td>
+                  <td key={index}>{cocktail.glass}</td>
+                  <td key={index}>{cocktail.instructions}</td>
+                </tr>
+              </React.Fragment>
+            )}
+          </table>
         </div>
       }
     </div>
