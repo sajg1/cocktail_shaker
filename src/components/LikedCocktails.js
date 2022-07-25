@@ -5,8 +5,8 @@ const LikedCocktails = (props) => {
 
 
   useEffect(() => {
-    props.getLiked()
-  }, [props])
+    props.getLiked();
+  }, [])
 
   return(
     <div className='liked-component'>
@@ -19,12 +19,12 @@ const LikedCocktails = (props) => {
               <th>Glassware</th>
               <th>Instructions</th>
             </tr>
-            {props.liked.map((cocktail, index) =>
+            {props.liked.map((cocktail) =>
               <React.Fragment>
-                <tr>
-                  <td key={index}>{cocktail.name}</td>
-                  <td key={index}>{cocktail.glass}</td>
-                  <td key={index}>{cocktail.instructions}</td>
+                <tr key={cocktail.id}>
+                  <td>{cocktail.name}</td>
+                  <td>{cocktail.glass}</td>
+                  <td>{cocktail.instructions}</td>
                 </tr>
               </React.Fragment>
             )}

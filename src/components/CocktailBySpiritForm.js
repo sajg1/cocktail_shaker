@@ -28,7 +28,7 @@ const handleSubmit = (e) => {
         <input type="submit" value="Find your Cocktail!" />
       </form>
       <p>Or</p>
-      <div classname="roll-dice">
+      <div className="roll-dice">
         <label>Just roll the dice: </label>
         <button onClick={props.getCocktail}>Click me</button>
       </div>
