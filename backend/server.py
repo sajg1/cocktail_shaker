@@ -4,8 +4,10 @@ from flask_marshmallow import Marshmallow
 from marshmallow import fields, Schema
 from pprint import pprint
 import json, jsonify, requests, random
+from flask_cors import  CORS
 
 app = Flask(__name__)
+CORS(app)
 base_url = "http://www.thecocktaildb.com/api/json/v1/1"
 
 # Database
@@ -109,14 +111,23 @@ def add_liked_cocktail():
     db.session.add(new_cocktail)
     db.session.commit()
     # liked_cocktail = LikedCocktail()
-    return "Complete"
+    return row_to_dict(new_cocktail)
 
-
-
-
-
-
+# @app.route('/delete-liked/<id>')
+# def delete_liked_cocktail(id):
+#     print(id)
+#     print(content)
+#     return "Delete"
 
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+# REACT delete request
+  # function deleteLikedDrink(id) {
+  #   axios.delete('/delete-liked/' + id)
+  #   .then((response) => {
+  #     console.log(response)
+  #   })
+  # }

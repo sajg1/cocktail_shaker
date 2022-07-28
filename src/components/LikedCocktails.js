@@ -1,12 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import '../styles/LikedCocktails.css'
 
 const LikedCocktails = (props) => {
 
-
-  useEffect(() => {
-    props.getLiked();
-  }, [])
 
   return(
     <div className='liked-component'>
@@ -14,20 +10,24 @@ const LikedCocktails = (props) => {
       { props.liked &&
         <div>
           <table>
-            <tr>
-              <th>Name</th>
-              <th>Glassware</th>
-              <th>Instructions</th>
-            </tr>
-            {props.liked.map((cocktail) =>
-              <React.Fragment>
-                <tr key={cocktail.id}>
-                  <td>{cocktail.name}</td>
-                  <td>{cocktail.glass}</td>
-                  <td>{cocktail.instructions}</td>
-                </tr>
-              </React.Fragment>
-            )}
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Glassware</th>
+                <th>Instructions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {props.liked.map((cocktail) =>
+                <React.Fragment>
+                  <tr>
+                    <td key={cocktail.id}>{cocktail.name}</td>
+                    <td key={cocktail.id}>{cocktail.glass}</td>
+                    <td key={cocktail.id}>{cocktail.instructions}</td>
+                  </tr>
+                </React.Fragment>
+              )}
+            </tbody>
           </table>
         </div>
       }

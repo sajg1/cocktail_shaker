@@ -7,8 +7,8 @@ const Home = (props) => {
   return(
     <div>
       <CocktailBySpiritForm className="cocktail-component" cocktailBySpirit={props.currentCocktailData} getCocktail={props.getRandomCocktailData} getCocktailBySpirit={props.getCocktailBySpirit} />
-      <Cocktail className="cocktail-component" cocktail={props.cocktail} likeDrink={props.likedDrink}/>
-      <DrinkDetails className="cocktail-component" cocktail={props.cocktail} />
+      <Cocktail className="cocktail-component" cocktail={props.cocktail} />
+      <DrinkDetails className="cocktail-component" cocktail={props.cocktail} likeDrink={props.likedDrink}/>
     </div>
   )
 }

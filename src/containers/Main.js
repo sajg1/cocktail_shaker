@@ -1,16 +1,18 @@
 import Home from '../components/Home';
 import NavBar from '../components/NavBar';
 import LikedCocktails from '../components/LikedCocktails';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import '../styles/Main.css'
 import axios from 'axios';
 
-
+// ISSUE WITH INFINTE LOOP ON GETLIKEDLIST
 export default function Main() {
 
   const [currentCocktailData, setCurrentCocktailData] = useState(null);
   const [likedCocktailsList, setLikedCocktailsList] = useState(null);
+
+  useEffect(() => getLikedCocktailsList(), [])
 
   // a function to setup the cocktaildata object structure, including the
   // ingredients and measures lists.
@@ -104,7 +106,8 @@ export default function Main() {
       headers:headers
     })
     .then((response) => {
-      console.log(response)
+      setLikedCocktailsList(likedCocktailsList => [...likedCocktailsList, response])
+      console.log(likedCocktailsList)
     })
     .then((error) => {
       console.log(error)

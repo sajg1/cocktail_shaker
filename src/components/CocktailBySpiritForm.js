@@ -17,7 +17,7 @@ const handleSubmit = (e) => {
       <form className="form-only" onSubmit={handleSubmit}>
         <label htmlFor='spirit-selector'>Choose your starter spirit:</label>
         <select name='spirit-selector' id='spirit-selector' onChange={(e) => setSpirit({...spirit, name:e.target.value})} value={spirit.name}>
-          <option value="" selected disabled hidden>Select your base spirit...</option>
+          <option value="" disabled hidden>Select your base spirit...</option>
           <option value="gin">Gin</option>
           <option value="bourbon">Bourbon</option>
           <option value="vodka">Vodka</option>
