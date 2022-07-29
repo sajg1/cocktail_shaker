@@ -3,6 +3,11 @@ import '../styles/LikedCocktails.css'
 
 const LikedCocktails = (props) => {
 
+  const handleClick = (event, id) => {
+    event.preventDefault();
+    console.log(typeof(id.toString()))
+    props.deleteCocktail(id);
+  }
 
   return(
     <div className='liked-component'>
@@ -24,6 +29,7 @@ const LikedCocktails = (props) => {
                     <td key={cocktail.id}>{cocktail.name}</td>
                     <td key={cocktail.id}>{cocktail.glass}</td>
                     <td key={cocktail.id}>{cocktail.instructions}</td>
+                    <td><input value='Delete' onClick={event => handleClick(event, cocktail.id)}/></td>
                   </tr>
                 </React.Fragment>
               )}

@@ -113,21 +113,11 @@ def add_liked_cocktail():
     # liked_cocktail = LikedCocktail()
     return row_to_dict(new_cocktail)
 
-# @app.route('/delete-liked/<id>')
-# def delete_liked_cocktail(id):
-#     print(id)
-#     print(content)
-#     return "Delete"
+@app.route('/delete-liked/<id>', methods=["DELETE"])
+def delete_liked_cocktail(id):
+    print(id)
+    return "Delete"
 
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-# REACT delete request
-  # function deleteLikedDrink(id) {
-  #   axios.delete('/delete-liked/' + id)
-  #   .then((response) => {
-  #     console.log(response)
-  #   })
-  # }

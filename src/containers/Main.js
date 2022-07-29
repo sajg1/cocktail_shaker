@@ -114,6 +114,14 @@ export default function Main() {
     })
   }
 
+  // REACT delete request
+  function deleteLikedDrink(id) {
+    axios.delete(`/delete-liked/${id.toString()}`)
+    .then((response) => {
+      console.log(response)
+    })
+  }
+
 
   return (
     <Router>
@@ -132,7 +140,7 @@ export default function Main() {
           cocktail={currentCocktailData}/>}/>
         <Route   // UPDATED HERE
           path="/liked-cocktails"
-          element={<LikedCocktails liked={likedCocktailsList} getLiked={getLikedCocktailsList}/>}
+          element={<LikedCocktails liked={likedCocktailsList} getLiked={getLikedCocktailsList} deleteCocktail={deleteLikedDrink}/>}
         />
       </Routes>
     </Router>
