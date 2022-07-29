@@ -115,8 +115,10 @@ def add_liked_cocktail():
 
 @app.route('/delete-liked/<id>', methods=["DELETE"])
 def delete_liked_cocktail(id):
-    print(id)
-    return "Delete"
+    cocktail = Cocktail.query.get(id)
+    db.session.delete(cocktail)
+    db.session.commit()
+    return row_to_dict(cocktail)
 
 
 if __name__ == "__main__":

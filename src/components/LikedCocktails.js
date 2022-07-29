@@ -9,6 +9,15 @@ const LikedCocktails = (props) => {
     props.deleteCocktail(id);
   }
 
+  if (props.liked == null) {
+    return(
+      <div className="no-list-entries">
+        <h2 className='list-heading'>List of your Liked Cocktails</h2>
+        <p>You have not yet added any cocktails to your liked List</p>
+      </div>
+    )
+  }
+
   return(
     <div className='liked-component'>
       <h2 className="list-heading">List of your liked Cocktails</h2>
@@ -29,7 +38,7 @@ const LikedCocktails = (props) => {
                     <td key={cocktail.id}>{cocktail.name}</td>
                     <td key={cocktail.id}>{cocktail.glass}</td>
                     <td key={cocktail.id}>{cocktail.instructions}</td>
-                    <td><input value='Delete' onClick={event => handleClick(event, cocktail.id)}/></td>
+                    <td><button onClick={event => handleClick(event, cocktail.id)}>Delete</button></td>
                   </tr>
                 </React.Fragment>
               )}

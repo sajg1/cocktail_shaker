@@ -118,6 +118,7 @@ export default function Main() {
   function deleteLikedDrink(id) {
     axios.delete(`/delete-liked/${id.toString()}`)
     .then((response) => {
+      getLikedCocktailsList();
       console.log(response)
     })
   }
