@@ -6,13 +6,28 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import '../styles/Main.css'
 import axios from 'axios';
 
-// ISSUE WITH INFINTE LOOP ON GETLIKEDLIST
+// ISSUE TO sort
+// likedList doesnt show entries straight away. Must refresh first to see them.
+
+
 export default function Main() {
 
   const [currentCocktailData, setCurrentCocktailData] = useState(null);
-  const [likedCocktailsList, setLikedCocktailsList] = useState(null);
+  const [likedCocktailsList, setLikedCocktailsList] = useState([]);
 
-  useEffect(() => getLikedCocktailsList(), [])
+  useEffect(() => {
+    dbDataExists().then((response) => {
+      const data = response['data']['output']
+      if (data.length > 0 && likedCocktailsList.length === 0) {
+        console.log("There is Data")
+        console.log("State is Empty")
+        getLikedCocktailsList();
+      }
+      else {
+        console.log("No Data")
+      }
+    });
+  }, [likedCocktailsList]);
 
   // a function to setup the cocktaildata object structure, including the
   // ingredients and measures lists.
@@ -49,14 +64,26 @@ export default function Main() {
     })
   }
 
+  function dbDataExists() {
+    const checkDB = axios({
+      method: "GET",
+      url: "/liked-cocktails"
+    })
+    .then((response) => {
+      console.log("dbCheck: ", response['data'])
+      return response
+    })
+    return checkDB
+  }
+
   function getLikedCocktailsList() {
     axios({
       method: "GET",
       url: "/liked-cocktails"
     })
     .then((response) => {
+      setLikedCocktailsList([...response['data']['output']])
       console.log(response)
-      setLikedCocktailsList(response['data']['output'])
     })
     .catch((error) => {
       console.log(error.response)
@@ -106,7 +133,8 @@ export default function Main() {
       headers:headers
     })
     .then((response) => {
-      setLikedCocktailsList(likedCocktailsList => [...likedCocktailsList, response])
+      console.log(response)
+      setLikedCocktailsList((likedCocktailsList) => [...likedCocktailsList, response['data']])
       console.log(likedCocktailsList)
     })
     .then((error) => {
@@ -118,7 +146,9 @@ export default function Main() {
   function deleteLikedDrink(id) {
     axios.delete(`/delete-liked/${id.toString()}`)
     .then((response) => {
-      getLikedCocktailsList();
+      getLikedCocktailsList()
+      // const newList = likedCocktailsList.filter((cocktail) => cocktail.id !== response.id)
+      // setLikedCocktailsList([...newList])
       console.log(response)
     })
   }

@@ -30,7 +30,7 @@ const handleSubmit = (e) => {
       <p>Or</p>
       <div className="roll-dice">
         <label>Just roll the dice: </label>
-        <button onClick={props.getCocktail}>Click me</button>
+        <button onClick={() => props.getCocktail()}>Click me</button>
       </div>
     </div>
   )

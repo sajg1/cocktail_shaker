@@ -9,7 +9,7 @@ const LikedCocktails = (props) => {
     props.deleteCocktail(id);
   }
 
-  if (props.liked == null) {
+  if (props.liked.length === 0) {
     return(
       <div className="no-list-entries">
         <h2 className='list-heading'>List of your Liked Cocktails</h2>
@@ -35,9 +35,9 @@ const LikedCocktails = (props) => {
               {props.liked.map((cocktail) =>
                 <React.Fragment>
                   <tr>
-                    <td key={cocktail.id}>{cocktail.name}</td>
-                    <td key={cocktail.id}>{cocktail.glass}</td>
-                    <td key={cocktail.id}>{cocktail.instructions}</td>
+                    <td key={cocktail.name}>{cocktail.name}</td>
+                    <td key={cocktail.glass}>{cocktail.glass}</td>
+                    <td key={cocktail.instructions}>{cocktail.instructions}</td>
                     <td><button onClick={event => handleClick(event, cocktail.id)}>Delete</button></td>
                   </tr>
                 </React.Fragment>

@@ -8,7 +8,7 @@ const DrinkDetails = (props) => {
     event.preventDefault();
     props.likeDrink()
   }
-  
+
   if (props.cocktail == null) {
     return null;
   }
