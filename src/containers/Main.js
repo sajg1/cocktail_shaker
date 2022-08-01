@@ -7,7 +7,7 @@ import '../styles/Main.css'
 import axios from 'axios';
 
 // ISSUE TO sort
-// likedList doesnt show entries straight away. Must refresh first to see them.
+
 
 
 export default function Main() {
@@ -15,6 +15,8 @@ export default function Main() {
   const [currentCocktailData, setCurrentCocktailData] = useState(null);
   const [likedCocktailsList, setLikedCocktailsList] = useState([]);
 
+  // First, check that data exists in the database. This function returns a
+  // promise which we use to check whether a rerender is required or not.
   useEffect(() => {
     dbDataExists().then((response) => {
       const data = response['data']['output']

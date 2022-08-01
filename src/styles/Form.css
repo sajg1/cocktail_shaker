@@ -1,6 +1,6 @@
 .form-container {
   background-color: #22EACA;
-  padding: 20px;
+  padding: 80px;
   text-align: center;
 }
 
@@ -31,6 +31,6 @@ button, input {
 }
 
 button:hover, input:hover {
-  background-color: #FF9E74;
+  background-color: white;
   color: #B31E6F;
 }

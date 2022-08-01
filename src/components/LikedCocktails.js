@@ -25,20 +25,23 @@ const LikedCocktails = (props) => {
         <div>
           <table>
             <thead>
-              <tr>
+              <tr className="table-headers">
+                <th></th>
                 <th>Name</th>
                 <th>Glassware</th>
                 <th>Instructions</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
               {props.liked.map((cocktail) =>
                 <React.Fragment>
-                  <tr>
+                  <tr className="cocktail-row">
+                    <td key={cocktail.image}><img src={cocktail.image} alt="cocktail-image"/></td>
                     <td key={cocktail.name}>{cocktail.name}</td>
                     <td key={cocktail.glass}>{cocktail.glass}</td>
                     <td key={cocktail.instructions}>{cocktail.instructions}</td>
-                    <td><button onClick={event => handleClick(event, cocktail.id)}>Delete</button></td>
+                    <td><button onClick={event => handleClick(event, cocktail.id)}>Remove Cocktail</button></td>
                   </tr>
                 </React.Fragment>
               )}

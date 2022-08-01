@@ -1,18 +1,60 @@
+.list-heading {
+  padding: 20px 0 50px 15px;
+  color: white;
+
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  color: #B31E6F;
+}
+
+thead th:nth-child(1) {
+  width: 10%;
+}
+
+thead th:nth-child(2) {
+  width: 10%;
+}
+
+thead th:nth-child(3) {
+  width: 10%;
+}
+
+thead th:nth-child(4) {
+  width: 35%;
+}
+
+thead th:nth-child(5) {
+  width: 5%;
+}
+
+th, td {
+  padding: 20px;
+  border-bottom: 2px solid white;
+  text-align: center;
+}
+
+
 .liked-component, .no-list-entries {
-  padding: 30px;
-  text-align: left;
+  /* padding: 30px; */
+  /* text-align: left; */
   background-color: #22EACA;
-  text-decoration: none;
+  /* text-decoration: none; */
 }
 
-.list-heading {
+/* .list-heading {
   padding-bottom: 20px;
-}
-
-.list-heading {
   color: white;
 }
 
-tr {
-  color: #B31E6F;
+thead, tbody {
+  margin: 20px;
+} */
+
+img {
+  height: 80px;
+  width: 80px;
 }
