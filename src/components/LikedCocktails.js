@@ -1,9 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
+import MoreInfo from './MoreInfo';
 import '../styles/LikedCocktails.css'
 
 const LikedCocktails = (props) => {
 
-  const handleClick = (event, id) => {
+  const [moreInfo, setMoreInfo] = useState(null);
+
+  const handleMoreInfoClick = (event, cocktail) => {
+    event.preventDefault();
+    setMoreInfo({
+      glass: cocktail.glass,
+      instructions: cocktail.instructions,
+      ingredients: cocktail.ingredients,
+      measures: cocktail.measures
+    })
+
+  }
+
+  const handleRemoveClick = (event, id) => {
     event.preventDefault();
     console.log(typeof(id.toString()))
     props.deleteCocktail(id);
@@ -11,7 +25,7 @@ const LikedCocktails = (props) => {
 
   if (props.liked.length === 0) {
     return(
-      <div className="no-list-entries">
+      <div className="container">
         <h2 className='list-heading'>List of your Liked Cocktails</h2>
         <p>You have not yet added any cocktails to your liked List</p>
       </div>
@@ -19,17 +33,16 @@ const LikedCocktails = (props) => {
   }
 
   return(
-    <div className='liked-component'>
+    <div className='container'>
       <h2 className="list-heading">List of your liked Cocktails</h2>
       { props.liked &&
-        <div>
+        <div className="row">
+          <div className="col-sm-10">
           <table>
             <thead>
               <tr className="table-headers">
                 <th></th>
-                <th>Name</th>
-                <th>Glassware</th>
-                <th>Instructions</th>
+                <th></th>
                 <th></th>
               </tr>
             </thead>
@@ -39,14 +52,17 @@ const LikedCocktails = (props) => {
                   <tr className="cocktail-row">
                     <td key={cocktail.image}><img src={cocktail.image} alt="cocktail-image"/></td>
                     <td key={cocktail.name}>{cocktail.name}</td>
-                    <td key={cocktail.glass}>{cocktail.glass}</td>
-                    <td key={cocktail.instructions}>{cocktail.instructions}</td>
-                    <td><button onClick={event => handleClick(event, cocktail.id)}>Remove Cocktail</button></td>
+                    <td className="more-info" key={cocktail.name} onClick={event => handleMoreInfoClick(event, cocktail)}><button>More Info...</button></td>
+                    <td><button onClick={event => handleRemoveClick(event, cocktail.id)}>Remove Cocktail</button></td>
                   </tr>
                 </React.Fragment>
               )}
             </tbody>
           </table>
+          </div>
+          <div className='col-sm-2'>
+            <MoreInfo info={moreInfo}/>
+          </div>
         </div>
       }
     </div>

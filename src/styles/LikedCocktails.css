@@ -6,40 +6,37 @@
 
 table {
   table-layout: fixed;
-  width: 100%;
+  width: 60%;
   border-collapse: collapse;
   color: #B31E6F;
 }
 
 thead th:nth-child(1) {
-  width: 10%;
+  width: 20%;
 }
 
 thead th:nth-child(2) {
-  width: 10%;
+  width: 20%;
 }
 
 thead th:nth-child(3) {
-  width: 10%;
+  width: 20%;
 }
 
-thead th:nth-child(4) {
-  width: 35%;
-}
-
-thead th:nth-child(5) {
-  width: 5%;
+thead th:nth-child(3) {
+  width: 20%;
 }
 
 th, td {
-  padding: 20px;
+  padding: 15px;
   border-bottom: 2px solid white;
   text-align: center;
 }
 
 
-.liked-component, .no-list-entries {
-  /* padding: 30px; */
+.container {
+  /* padding: 20px 100px; */
+  width: 50%;
   /* text-align: left; */
   background-color: #22EACA;
   /* text-decoration: none; */

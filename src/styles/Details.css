@@ -5,13 +5,9 @@ h3, h4 {
   font-size: 24px;
 }
 
-h3 {
-  border-bottom: 2px solid white;
-}
-
 .details-component {
-  background-color: #B31E6F;
-  padding-top: 80px;
+  background-color: #fff;
+  padding: 80px 0 80px 0;
 }
 
 .details-box {
@@ -33,13 +29,13 @@ h3 {
 
 .details-component img {
   border-radius: 10%;
-  margin: 0 0 100px 25px;
   padding: 5px;
+  margin-bottom: 50px;
   height: 300px;
   width: 300px;
-  background-color: #FF9E74;
+  background-color: white;
 }
 
 .like-button {
-
+  margin: 50px 10px;
 }
