@@ -9,6 +9,7 @@ const LikedCocktails = (props) => {
   const handleMoreInfoClick = (event, cocktail) => {
     event.preventDefault();
     setMoreInfo({
+      name:cocktail.name,
       glass: cocktail.glass,
       instructions: cocktail.instructions,
       ingredients: cocktail.ingredients,
@@ -33,11 +34,13 @@ const LikedCocktails = (props) => {
   }
 
   return(
-    <div className='container'>
-      <h2 className="list-heading">List of your liked Cocktails</h2>
+    <div className='container-fluid'>
+      <div className="col-sm-12">
+        <h2 className="list-heading">List of your liked Cocktails</h2>
+      </div>
       { props.liked &&
         <div className="row">
-          <div className="col-sm-10">
+          <div className="col-sm-6">
           <table>
             <thead>
               <tr className="table-headers">
@@ -50,17 +53,17 @@ const LikedCocktails = (props) => {
               {props.liked.map((cocktail) =>
                 <React.Fragment>
                   <tr className="cocktail-row">
-                    <td key={cocktail.image}><img src={cocktail.image} alt="cocktail-image"/></td>
+                    <td key={cocktail.image}><img src={cocktail.image} alt="cocktail"/></td>
                     <td key={cocktail.name}>{cocktail.name}</td>
-                    <td className="more-info" key={cocktail.name} onClick={event => handleMoreInfoClick(event, cocktail)}><button>More Info...</button></td>
-                    <td><button onClick={event => handleRemoveClick(event, cocktail.id)}>Remove Cocktail</button></td>
+                    <td key={cocktail.glass}><button onClick={event => handleMoreInfoClick(event, cocktail)}>More Info...</button></td>
+                    <td key={cocktail.id}><button onClick={event => handleRemoveClick(event, cocktail.id)}>Remove Cocktail</button></td>
                   </tr>
                 </React.Fragment>
               )}
             </tbody>
           </table>
           </div>
-          <div className='col-sm-2'>
+          <div className='col-sm-6'>
             <MoreInfo info={moreInfo}/>
           </div>
         </div>
