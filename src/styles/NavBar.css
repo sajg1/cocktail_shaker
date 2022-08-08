@@ -2,6 +2,7 @@
   overflow: hidden;
   background-color: #EE5A5A;
   margin: 0;
+  padding-left: 10px;
 }
 
 .nav-bar li {

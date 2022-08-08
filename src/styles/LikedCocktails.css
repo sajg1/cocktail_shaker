@@ -33,9 +33,10 @@ th, td {
   text-align: center;
 }
 
+
 .container-fluid {
   magin: 0;
-  padding: 20px 100px;
+  padding: 20px 100px 200px 100px;
   width: 60%;
   /* text-align: left; */
   background-color: #22EACA;
@@ -45,4 +46,8 @@ th, td {
 img {
   height: 80px;
   width: 80px;
+}
+
+.more-info {
+  border-left: 1px solid white;
 }

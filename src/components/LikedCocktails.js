@@ -56,14 +56,14 @@ const LikedCocktails = (props) => {
                     <td key={cocktail.image}><img src={cocktail.image} alt="cocktail"/></td>
                     <td key={cocktail.name}>{cocktail.name}</td>
                     <td key={cocktail.glass}><button onClick={event => handleMoreInfoClick(event, cocktail)}>More Info...</button></td>
-                    <td key={cocktail.id}><button onClick={event => handleRemoveClick(event, cocktail.id)}>Remove Cocktail</button></td>
+                    <td key={cocktail.id}><button type="button" className="" onClick={event => handleRemoveClick(event, cocktail.id)}>Remove Cocktail</button></td>
                   </tr>
                 </React.Fragment>
               )}
             </tbody>
           </table>
           </div>
-          <div className='col-sm-6'>
+          <div className='col-sm-6 more-info'>
             <MoreInfo info={moreInfo}/>
           </div>
         </div>
