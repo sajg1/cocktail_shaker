@@ -22,22 +22,24 @@ const DrinkDetails = (props) => {
           <img src={props.cocktail.image} alt="Missing Cocktail" ></img>
           <button className="like-button" onClick={handleLikeClick}>Like this cocktail 👍</button>
           <p>This should be presented in a {props.cocktail.glass}.</p>
-          <table className="details-table">
-            <thead>
-              <tr>
-                <th>Ingredients</th>
-                <th>Measures</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                {props.cocktail.ingredients.map((ingredient, index) => <td key={index}>{ingredient.ingredient}</td>)}
-              </tr>
-              <tr>
-                {props.cocktail.measures.map((measure, index) =><td key={index}>{measure.measure}</td>)}
-              </tr>
-            </tbody>
-          </table>
+          <div className='row'>
+            <div className="col-sm-6 ingredients even">
+              <h5>Ingredients</h5>
+              <ul className="list-unstyled">
+                {props.cocktail.ingredients.map((ingredient) =>
+                  <li>{ingredient.ingredient}</li>
+                )}
+              </ul>
+            </div>
+            <div className="col-sm-6 measures even">
+              <h5>Measures</h5>
+              <ul className="list-unstyled">
+                {props.cocktail.measures.map((measure) =>
+                  <li>{measure.measure}</li>
+                )}
+              </ul>
+            </div>
+          </div>
           <p>{props.cocktail.instructions}</p>
         </div>
       }

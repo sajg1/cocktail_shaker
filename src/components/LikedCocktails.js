@@ -40,7 +40,7 @@ const LikedCocktails = (props) => {
       </div>
       { props.liked &&
         <div className="row">
-          <div className="col-sm-6">
+          <div className="col-sm-6 liked-table">
           <table>
             <thead>
               <tr className="table-headers">

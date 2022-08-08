@@ -14,9 +14,8 @@ label, p {
   padding: 10px 10px 10px 0;
 }
 
-select {
-  margin: 0 20px 0 20px;
-  padding: 5px 0 5px 0;
+.spirit-select {
+  padding: 5px 0;
   background-color: #B31E6F;
   color: #22EACA;
   font-weight: 600;

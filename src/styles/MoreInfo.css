@@ -8,6 +8,10 @@ h3,h5 {
   margin-bottom: 50px;
 }
 
+.odd {
+  background-color: #22DFCA;
+}
+
 .measures {
   border-left: 1px solid white;
 }

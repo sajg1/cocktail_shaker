@@ -11,21 +11,18 @@ table {
   color: #B31E6F;
 }
 
-/* thead th:nth-child(1) {
-  width: 10%;
+.liked-table {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
-thead th:nth-child(2) {
-  width: 50%;
+tr:nth-child(even) {
+  background-color: #22DFCA;
 }
 
-thead th:nth-child(3) {
-  width: 10%;
-}
+tr:nth-child(odd) {
 
-thead th:nth-child(4) {
-  width: 10%;
-} */
+}
 
 th, td {
   padding: 15px 15px;

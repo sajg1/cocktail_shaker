@@ -7,12 +7,12 @@ const MoreInfo = (props) => {
     return(
       <div>
         <h3 className="name">{props.info.name}</h3>
-        <div className="instructions">
+        <div className="instructions odd">
           <h5>Instructions</h5>
           <p>{props.info.instructions}</p>
         </div>
         <div className='row'>
-          <div className="col-sm-6 ingredients">
+          <div className="col-sm-6 ingredients even">
             <h5>Ingredients</h5>
             <ul className="list-unstyled">
               {props.info.ingredients.map((ingredient) =>
@@ -20,7 +20,7 @@ const MoreInfo = (props) => {
               )}
             </ul>
           </div>
-          <div className="col-sm-6 measures">
+          <div className="col-sm-6 measures even">
             <h5>Measures</h5>
             <ul className="list-unstyled">
               {props.info.measures.map((measure) =>
@@ -29,7 +29,7 @@ const MoreInfo = (props) => {
             </ul>
           </div>
         </div>
-        <p className="glassware">This cocktail should be served in a {props.info.glass}</p>
+        <p className="glassware odd">This cocktail should be served in a {props.info.glass}</p>
       </div>
     )
   }
