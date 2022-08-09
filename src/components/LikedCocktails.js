@@ -26,9 +26,8 @@ const LikedCocktails = (props) => {
 
   if (props.liked.length === 0) {
     return(
-      <div className="container">
-        <h2 className='list-heading'>List of your Liked Cocktails</h2>
-        <p>You have not yet added any cocktails to your liked List</p>
+      <div className="container-fluid">
+        <p className="no-cocktails-message">You have not yet added any cocktails to your liked List</p>
       </div>
     )
   }

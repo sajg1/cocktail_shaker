@@ -137,6 +137,7 @@ export default function Main() {
     .then((response) => {
       console.log(response)
       setLikedCocktailsList((likedCocktailsList) => [...likedCocktailsList, response['data']])
+      getLikedCocktailsList()
       console.log(likedCocktailsList)
     })
     .then((error) => {

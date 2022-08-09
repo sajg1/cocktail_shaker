@@ -10,17 +10,24 @@ const DrinkDetails = (props) => {
   }
 
   if (props.cocktail == null) {
-    return null;
+    return (
+      <div className="placeholder-component">
+        <div className="image-and-header">
+          <img src="/cocktail_shaker.png" alt="shaker"/>
+          <h4>Shake It Up!!</h4>
+        </div>
+      </div>
+    );
   }
 
   return (
     <div className="details-component">
       {props.cocktail &&
         <div className="details-box">
-          <h4>You're random cocktail is a.......</h4>
+          <h5>You're random cocktail is a.......</h5>
           <h3>{props.cocktail.name}</h3>
           <img src={props.cocktail.image} alt="Missing Cocktail" ></img>
-          <button className="like-button" onClick={handleLikeClick}>Like this cocktail 👍</button>
+          <button className="like-button" onClick={handleLikeClick}>Like 👍</button>
           <p>This should be presented in a {props.cocktail.glass}.</p>
           <div className='row'>
             <div className="col-sm-6 ingredients even">

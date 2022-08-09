@@ -5,7 +5,7 @@ h3,h5 {
 .ingredients, .measures, .glassware, .name, .instructions {
   color: #B31E6F;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 5%;
 }
 
 .odd {

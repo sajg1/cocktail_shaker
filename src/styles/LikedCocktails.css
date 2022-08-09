@@ -48,3 +48,7 @@ img {
 .more-info {
   border-left: 1px solid white;
 }
+
+.no-cocktails-message {
+  padding: 10%;
+}
