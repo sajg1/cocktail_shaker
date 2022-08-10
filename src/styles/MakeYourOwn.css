@@ -1,0 +1,13 @@
+.make-your-own form {
+  padding: 10% 0 0 15%;
+}
+
+.make-your-own input, textarea {
+  display: block;
+  margin: 0 0 5% 0;
+}
+
+.make-your-own textarea {
+  height: auto;
+  width: 65%;
+}

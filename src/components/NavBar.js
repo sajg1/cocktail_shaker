@@ -8,7 +8,10 @@ const NavBar = () => (
       <Link style={{textDecoration:'none'}} to="/">Home</Link>
     </li>
     <li>
-      <Link style={{textDecoration:'none'}} to="/liked-cocktails">Liked Cocktails</Link>
+      <Link style={{textDecoration:'none'}} to="/liked-cocktails">Favourites</Link>
+    </li>
+    <li>
+      <Link style={{textDecoration: 'none'}} to="/make-your-own">Make Your Own Cocktail</Link>
     </li>
   </ul>
 );

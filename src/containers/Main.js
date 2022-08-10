@@ -1,6 +1,7 @@
 import Home from '../components/Home';
 import NavBar from '../components/NavBar';
 import LikedCocktails from '../components/LikedCocktails';
+import MakeYourOwn from '../components/MakeYourOwn';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import '../styles/Main.css'
@@ -176,6 +177,7 @@ export default function Main() {
           path="/liked-cocktails"
           element={<LikedCocktails liked={likedCocktailsList} getLiked={getLikedCocktailsList} deleteCocktail={deleteLikedDrink}/>}
         />
+        <Route path="/make-your-own" element={<MakeYourOwn/>}/>
       </Routes>
     </Router>
   )
