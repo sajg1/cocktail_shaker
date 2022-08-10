@@ -1,24 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../styles/MakeYourOwn.css';
 
 const MakeYourOwn = (props) => {
+
+  const [customCocktail, setCustomCocktail] = useState({
+    name: "",
+    glass: "",
+    instructions: ""
+  })
+
   return(
-    <div className='row'>
+    <div className='row make-row'>
       <div className='col-sm-6 make-your-own'>
         <form>
           <label>Cocktail Name</label>
-          <input type="text"></input>
+          <input type="text" onChange={(e) => setCustomCocktail({...customCocktail, name: e.target.value})}></input>
           <label>Glassware</label>
-          <input type="text"></input>
+          <input type="text" onChange={(e) => setCustomCocktail({...customCocktail, glass: e.target.value})}></input>
           <label>Instructions</label>
-          <textarea name='instructions' form="make-your-own" placeholder="Enter your instructions..."></textarea>
+          <textarea name='instructions' form="make-your-own" onChange={(e) => setCustomCocktail({...customCocktail, instructions: e.target.value})} placeholder="Enter your instructions..."></textarea>
         </form>
       </div>
       <div className='col-sm-6 review-submission'>
         <table>
           <tr>
             <th>Name</th>
-            <td>Example Name</td>
+            <td></td>
           </tr>
           <tr>
             <th>Glassware</th>
