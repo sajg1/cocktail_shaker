@@ -13,7 +13,8 @@ const LikedCocktails = (props) => {
       glass: cocktail.glass,
       instructions: cocktail.instructions,
       ingredients: cocktail.ingredients,
-      measures: cocktail.measures
+      measures: cocktail.measures,
+      image: cocktail.image
     })
 
   }

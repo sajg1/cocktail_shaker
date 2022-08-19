@@ -1,3 +1,21 @@
+.more-info-div {
+  overflow: hidden;
+  position: relative;
+}
+
+.more-info-bg {
+  opacity: 0.3;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+}
+
+.content {
+  position: relative;
+}
+
 h3,h5 {
   text-align: center;
 }
@@ -8,9 +26,10 @@ h3,h5 {
   margin-bottom: 5%;
 }
 
-.odd {
+/* .odd {
   background-color: #22DFCA;
-}
+  opacity: 0.3;
+} */
 
 .measures {
   border-left: 1px solid white;
@@ -18,4 +37,9 @@ h3,h5 {
 
 p {
   text-align: center;
+}
+
+.more-info-div {
+  background-size: contain;
+  /* opacity: .4; */
 }

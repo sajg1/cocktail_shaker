@@ -1,5 +1,5 @@
 .make-row {
-  padding: 5%;
+  padding: 5px;
 }
 
 .make-your-own input, textarea {
@@ -10,4 +10,33 @@
 .make-your-own textarea {
   height: auto;
   width: 65%;
+}
+
+.table-results {
+  width: 100%;
+}
+
+.review-header {
+  width: 30%;
+  padding: 15px 0;
+}
+
+.review-result-tight {
+  width: 100%;
+  padding: 0 5px;
+  overflow-wrap: break-word;
+}
+
+.review-result-expand {
+  width: 100%;
+  max-height: 150px;
+  padding: 0 5px;
+  display: block;
+  overflow-wrap: break-word;
+  overflow-y: scroll;
+}
+
+.review-div-title {
+  padding: 15px 0;
+  color: #B31E6F;
 }

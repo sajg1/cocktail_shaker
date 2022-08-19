@@ -22,18 +22,19 @@ const MakeYourOwn = (props) => {
         </form>
       </div>
       <div className='col-sm-6 review-submission'>
-        <table>
+        <h4 className="review-div-title">Review your Cocktail</h4>
+        <table className='table-results'>
           <tr>
-            <th>Name</th>
-            <td></td>
+            <th className='review-header'>Name</th>
+            <td className='review-result-tight'>{customCocktail.name}</td>
           </tr>
           <tr>
-            <th>Glassware</th>
-            <td>Pint</td>
+            <th className='review-header'>Glassware</th>
+            <td className='review-result-tight'>{customCocktail.glass}</td>
           </tr>
           <tr>
-            <th>Instructions</th>
-            <td>This is how you make a cocktail. And you mix this with that and then pour this into there. Mix it all up and pour.</td>
+            <th className='review-header'>Instructions</th>
+            <td className='review-result-expand'>{customCocktail.instructions}</td>
           </tr>
           <button>Submit Cocktail</button>
         </table>

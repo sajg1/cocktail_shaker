@@ -164,7 +164,7 @@ export default function Main() {
         <h1 className="logo">CocktailShaker</h1>
       </div>
       < NavBar />
-      <Routes>
+      <Routes className="wrap">
         <Route exact path="/" element={<Home
           cocktailBySpirit={currentCocktailData}
           likedCocktails={likedCocktailsList}

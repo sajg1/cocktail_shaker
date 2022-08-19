@@ -1,6 +1,6 @@
-* {
-  margin:0;
-  /* background-color: #B31E6F; */
+.wrap {
+  width: 1000px;
+  margin: 0 auto;
 }
 
 .header {
