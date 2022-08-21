@@ -1,5 +1,6 @@
 .make-row {
   padding: 5px;
+  height: auto;
 }
 
 .make-your-own input, textarea {

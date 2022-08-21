@@ -4,16 +4,14 @@
 
 }
 
-table {
-  table-layout: fixed;
-  /* width: 70%; */
-  border-collapse: collapse;
-  color: #B31E6F;
-}
-
 .liked-table {
+  table-layout: fixed;
+  color: #B31E6F;
+  border-collapse: collapse;
   padding-left: 0 !important;
   padding-right: 0 !important;
+  display: block;
+  overflow-y:scroll;
 }
 
 tr:nth-child(even) {
@@ -32,7 +30,7 @@ th, td {
 
 
 .container-fluid {
-  magin: 0;
+  margin: 0;
   padding: 20px 100px 200px 100px;
   width: 60%;
   /* text-align: left; */
